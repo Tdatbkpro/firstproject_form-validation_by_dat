@@ -1,0 +1,16 @@
+{
+  "courses": [
+    {
+      "fullname": "dta`",
+      "gender": "Nữ",
+      "birthday": "2004-06-22",
+      "email": "trandat22062004@gmail.com",
+      "city": "20",
+      "district": "178",
+      "ward": "05974",
+      "password": "112233",
+      "textbox": "klaslf",
+      "id": 1
+    }
+  ]
+}
