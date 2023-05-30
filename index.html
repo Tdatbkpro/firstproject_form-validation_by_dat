@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+    <div class="main">
+
+        <form action="" method="POST" class="form" id="form-1">
+          <h3 class="heading">Form Đăng ký</h3>
+          <h5 class="heading">Hãy điền và nhận xét</h5>
+          <p class="desc">Form Validation</p>
+      
+          <p class="desc">First project on font-end programmed with HTML, CSS and Javascript by  Đạt ❤️</p>
+      
+          <div class="spacer"></div>
+      
+          <div class="form-group">
+            <label for="fullname" class="form-label">Tên đầy đủ</label>
+            <input id="fullname" name="fullname" type="text" placeholder="VD: Trần Quốc Đạt" class="form-control">
+            <span class="form-message"></span>
+          </div>
+        <div class="form-group">
+            <label for="gender" class="form-label">Giới tính</label>
+            <div class="gioi-tinh">
+              <div>
+                <span class="control">
+                    Nữ
+                <input type="radio" name = "gender"  value="Nữ" class="form-control ctrl">   
+                </span>      
+            </div>
+                <div>
+                    <span class="control"> 
+                    Nam
+                    <input type="radio" name = "gender" value="Nam" class="form-control ctrl"></span>
+                </div>
+                
+                    </span>
+                <div>
+                    <span class="control">
+                        Khác
+                    <input type="radio" name = "gender"  value="Khác" class="form-control ctrl">
+                    </span>
+                </div>
+            </div>
+            <span class="form-message"></span>
+        </div>
+         <div class="form-group">
+            <label for="birthday" class="form-label">Sinh nhật</label>
+            <input type="date" id="birthday" name="birthday" class="form-control">
+            <span class="form-message"></span>
+         </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" type="text" placeholder="VD: dat@gmail.com" class="form-control">
+            <span class="form-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="proviced" class="form-label">Quê Quán</label>
+            <div class="form-group">
+            <select class="form-select form-select-sm mb-3 form-control" id="city" name="city" aria-label=".form-select-sm">
+            <option value=""  selected>-- Chọn Tỉnh/TP --</option>           
+            </select>
+            <span class="form-message"></span>
+            </div>
+                      
+            <div class="form-group">
+              <select class="form-select form-select-sm mb-3 form-control" id="district" name="district" aria-label=".form-select-sm">
+                <option value="" selected>-- Chọn Quận/Huyện --</option>
+                </select>
+                <span class="form-message"></span>
+            </div>
+            
+            <div class="form-group">
+              <select class="form-select form-select-sm form-control" id="ward" name="ward" aria-label=".form-select-sm">
+                <option value=""  selected>--- Chọn Phường/Xã ---</option>
+                </select>
+                <span class="form-message"></span>
+            </div>
+      
+            <div class="form-group">
+              <label for="avarta" class="form-label">Ảnh đại diện</label>
+              <input id="avarta" name="avarta" type="file" class="form-control">
+              <span class="form-message"></span>
+            </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+            <span class="form-message"></span>
+          </div>
+        </div>
+          <div class="form-group">
+            <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+            <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+            <span class="form-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="textbox" class="form-label">Comment</label>
+            <textarea name="textbox" id="textbox" cols="40" rows="20" style="height: 200px;" class="form-control" placeholder="Nhấp vào để viết ❤️ "></textarea>
+            <span class="form-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="connect" class="form-label form-connect">Kết nối với tôi qua    :
+              <a href="https://www.facebook.com/DatManucian2206/" target=”_blank” class="icon-link">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+
+              <a href="https://www.instagram.com/dat_manucian_8/" target=”_blank” class="icon-link">
+                <i class=" fa-brands fa-instagram"></i>
+            </a>
+            </label>
+          
+          </div>
+          <button class="form-submit" id="create">Đăng ký</button>
+
+          <p class="desc">Có thể xem lại thông tin đã điền ở bên dưới
+            <i class="fa-thin fa-down"></i>
+          </p>
+
+
+          <div class="form-group">
+            <ul id="list-courses" class="form-render" style="font-size: 1.4rem;"></ul>
+          </div>
+        </form>
+      </div>
+
+         
+
+   <script src="./validator.js"></script>
+   <script>
+        Validator({        
+            form : '#form-1',
+            formGroupSelector : '.form-group',
+            errorSelector: '.form-message',
+            rules : [
+                     Validator.isRequired('#fullname' , 'Vui lòng nhập đầy đủ tên của bạn'),
+                     Validator.isRequired('#email'),
+                     Validator.isRequired('#password_confirmation'),
+                     Validator.isRequired('#birthday'),
+                     Validator.isRequired('#password'),
+                     Validator.isRequired('#avarta'),
+                     Validator.isRequired('#textbox'),
+                     Validator.isRequired('#city'),
+                     Validator.isRequired('#district'),
+                     Validator.isRequired('#ward'),
+                     Validator.isRequired('input[name="gender"]'),
+                     Validator.isEmail('#email'),
+                     Validator.minLength('#password', 6),
+                     Validator.isConfirmed('#password_confirmation', function () {
+                        return document.querySelector('#form-1 #password').value;
+                     },'Mật khẩu nhập lại không chính xác')  
+            ],
+            onSubmit: function(data) {
+                console.log(data)
+            }
+        });
+   </script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+var citis = document.getElementById("city");
+var districts = document.getElementById("district");
+var wards = document.getElementById("ward");
+var Parameter = {
+url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json", 
+method: "GET", 
+responseType: "application/json", 
+};
+var promise = axios(Parameter);
+promise.then(function (result) {
+renderCity(result.data);
+});
+
+function renderCity(data) {
+for (const x of data) {
+citis.options[citis.options.length] = new Option(x.Name, x.Id);
+}
+citis.onchange = function () {
+district.length = 1;
+ward.length = 1;
+if(this.value != ""){
+  const result = data.filter(n => n.Id === this.value);
+
+  for (const k of result[0].Districts) {
+    district.options[district.options.length] = new Option(k.Name, k.Id);
+  }
+}
+};
+district.onchange = function () {
+ward.length = 1;
+const dataCity = data.filter((n) => n.Id === citis.value);
+if (this.value != "") {
+  const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+
+  for (const w of dataWards) {
+    wards.options[wards.options.length] = new Option(w.Name, w.Id);
+  }
+}
+};
+}
+</script>
+</body>
+</html>
