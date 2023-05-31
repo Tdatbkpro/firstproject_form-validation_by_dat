@@ -132,11 +132,19 @@ function Validator(options) {
             });
 }
 
-Validator.isRequired = function(selector , message) {
+Validator.isRequired = function(selector, message) {
     return {
         selector: selector,
         test: function (value) {
             return value ? undefined : message || 'Vui lòng nhập vào trường này'           
+        }
+    };
+}
+Validator.isRequired_name = function(selector , message) {
+    return {
+        selector: selector,
+        test: function (value) {
+            return value.trim() ? undefined : message || 'Vui lòng nhập vào trường này'           
         }
     };
 }
@@ -146,6 +154,16 @@ Validator.isEmail = function(selector) {
         test: function (value) {
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             return regex.test(value) ? undefined : 'Trường này phải là email'
+        }
+    };
+}
+
+Validator.isPhone = function(selector) {
+    return {
+        selector: selector,
+        test: function (value) {
+            var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+            return vnf_regex.test(value) ? undefined : 'Số điện thoại không hợp lệ'
         }
     };
 }
@@ -167,8 +185,6 @@ Validator.isConfirmed = function (selector,getConfirmValue,message) {
         }
         }
 }
-
-
 
 
 var courseApi = "http://localhost:3000/courses"
@@ -208,6 +224,7 @@ function handleDeleteCourse(id) {
             }
     });
 }
+
 function createCourse (data, callback) {
     var options = {
         method: 'POST',
@@ -222,6 +239,7 @@ function createCourse (data, callback) {
         })
     .then(callback);
 }
+
 
 
 function renderCourses(courses) {
@@ -252,6 +270,7 @@ function renderCourses(courses) {
        ${course.textbox}</p>
        
         <button onclick="handleDeleteCourse(${course.id})">Xóa</button>
+        <button onclick="handlePatchCourse(${course.id})">Sửa</button>
         </li>
        `
     })
@@ -267,6 +286,8 @@ function handleCreateForm() {
         var gender = document.querySelector('input[name="gender"]:checked').value;
         var birthday = document.querySelector('#birthday').value;
         var email = document.querySelector('#email').value;
+        var phone = document.querySelector('#phone').value;
+        var avarta = document.querySelector('#avarta').value;
         var city = document.querySelector('#city').value;
         var district = document.querySelector('#district').value;
         var ward = document.querySelector('#ward').value;
@@ -277,10 +298,12 @@ function handleCreateForm() {
         gender: gender,
         birthday: birthday,
         email: email,
+        phone: phone,
         city: city,
         district: district,
         ward: ward,
         password: password,
+        avarta:avarta,
         textbox:textbox
        }   
        createCourse(formData,function(){
@@ -292,9 +315,40 @@ function handleCreateForm() {
 
 
 
+    var createBtnn = document.querySelector("#create");
+    createBtnn.onclick = function() {
+        var fullname = document.querySelector('#fullname').value;
+        var gender = document.querySelector('input[name="gender"]:checked').value;
+        var birthday = document.querySelector('#birthday').value;
+        var email = document.querySelector('#email').value;
+        var phone = document.querySelector('#phone').value;
+        var city = document.querySelector('#city').value;
+        var district = document.querySelector('#district').value;
+        var ward = document.querySelector('#ward').value;
+        var password = document.querySelector('#password').value;
+        var textbox = document.querySelector('#textbox').value;
+       let data = {
+        'entry.767890172': fullname,
+        'entry.1774983381' : gender,
+        'entry.390543899': email, 
+        'entry.1583212180': phone,
+        'entry.1655424427': city,
+        'entry.860003001': district,
+        'entry.276486014': ward,
+        'entry.1262033218': password,
+        'entry.1739025945': textbox,
+        'entry.575079202':birthday,
+        }
 
+        let queryString = new URLSearchParams(data);
+        queryString = queryString.toString();
 
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfnMfoUDw7a9BCsF5nAMY5Z5VXRFoNoh99kURLhotucRdXQyA/formResponse', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
 
+        xhr.send(queryString);
 
+        alert('Cảm ơn bạn đã điền !!!')
 
-
+    }

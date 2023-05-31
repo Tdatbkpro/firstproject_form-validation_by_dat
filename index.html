@@ -13,7 +13,7 @@
 
         <form action="" method="POST" class="form" id="form-1">
           <h3 class="heading">Form Đăng ký</h3>
-          <h5 class="heading">Hãy điền và nhận xét</h5>
+          <h6 class="heading" style="font-weight: 450; font-size: 1.9rem;">Hãy điền và xin nhận xét về project</h6>
           <p class="desc">Form Validation</p>
       
           <p class="desc">First project on font-end programmed with HTML, CSS and Javascript by  Đạt ❤️</p>
@@ -21,7 +21,7 @@
           <div class="spacer"></div>
       
           <div class="form-group">
-            <label for="fullname" class="form-label">Tên đầy đủ</label>
+            <label for="fullname" class="form-label">Họ và tên</label>
             <input id="fullname" name="fullname" type="text" placeholder="VD: Trần Quốc Đạt" class="form-control">
             <span class="form-message"></span>
           </div>
@@ -58,6 +58,11 @@
           <div class="form-group">
             <label for="email" class="form-label">Email</label>
             <input id="email" name="email" type="text" placeholder="VD: dat@gmail.com" class="form-control">
+            <span class="form-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="form-label">Số điện thoại</label>
+            <input type="tel" name="phone" id="phone" placeholder="VD: 0705589***" class="form-control">
             <span class="form-message"></span>
           </div>
           <div class="form-group">
@@ -120,13 +125,17 @@
           </div>
           <button class="form-submit" id="create">Đăng ký</button>
 
-          <p class="desc">Có thể xem lại thông tin đã điền ở bên dưới
+          <p class="desc">❤️ THANK YOU ❤️
             <i class="fa-thin fa-down"></i>
           </p>
 
 
           <div class="form-group">
             <ul id="list-courses" class="form-render" style="font-size: 1.4rem;"></ul>
+          </div>
+
+          <div class="form-group">
+            <ul id="data-update" class="form-render" style="font-size: 1.4rem;"></ul>
           </div>
         </form>
       </div>
@@ -140,11 +149,12 @@
             formGroupSelector : '.form-group',
             errorSelector: '.form-message',
             rules : [
-                     Validator.isRequired('#fullname' , 'Vui lòng nhập đầy đủ tên của bạn'),
+                     Validator.isRequired_name('#fullname' , 'Vui lòng nhập đầy đủ tên của bạn'),
                      Validator.isRequired('#email'),
                      Validator.isRequired('#password_confirmation'),
                      Validator.isRequired('#birthday'),
                      Validator.isRequired('#password'),
+                     Validator.isRequired('#phone'),
                      Validator.isRequired('#avarta'),
                      Validator.isRequired('#textbox'),
                      Validator.isRequired('#city'),
@@ -152,13 +162,16 @@
                      Validator.isRequired('#ward'),
                      Validator.isRequired('input[name="gender"]'),
                      Validator.isEmail('#email'),
+                     Validator.isPhone('#phone'),
                      Validator.minLength('#password', 6),
                      Validator.isConfirmed('#password_confirmation', function () {
                         return document.querySelector('#form-1 #password').value;
                      },'Mật khẩu nhập lại không chính xác')  
             ],
+
             onSubmit: function(data) {
-                console.log(data)
+              
+              //console.log(data);
             }
         });
    </script>
