@@ -322,29 +322,31 @@ function handleCreateForm() {
         var birthday = document.querySelector('#birthday').value;
         var email = document.querySelector('#email').value;
         var phone = document.querySelector('#phone').value;
+        var avarta = document.querySelector('#avarta').value;
         var city = document.querySelector('#city').value;
         var district = document.querySelector('#district').value;
         var ward = document.querySelector('#ward').value;
         var password = document.querySelector('#password').value;
         var textbox = document.querySelector('#textbox').value;
        let data = {
-        'entry.767890172': fullname,
-        'entry.1774983381' : gender,
-        'entry.390543899': email, 
-        'entry.1583212180': phone,
-        'entry.1655424427': city,
-        'entry.860003001': district,
-        'entry.276486014': ward,
-        'entry.1262033218': password,
-        'entry.1739025945': textbox,
-        'entry.575079202':birthday,
+        'entry.392066651': fullname,
+        'entry.725491086' : gender,
+        'entry.94405496':birthday,
+        'entry.1642920523': email, 
+        'entry.1478803900': phone,
+        'entry.701017272': city,
+        'entry.688732736': district,
+        'entry.189067818': ward,
+        'entry.692688599' : avarta,
+        'entry.792384837': password,
+        'entry.1738710434': textbox
         }
 
         let queryString = new URLSearchParams(data);
         queryString = queryString.toString();
 
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfnMfoUDw7a9BCsF5nAMY5Z5VXRFoNoh99kURLhotucRdXQyA/formResponse', true);
+        xhr.open("POST", 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdV4IHA4qF9DxLeXDnj8VfV7dDwrgL9d7DTCBZ9UQ-4lAk7Rg/formResponse', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
 
         xhr.send(queryString);
