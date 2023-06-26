@@ -12,9 +12,8 @@
     <div class="main">
 
         <form action="" method="POST" class="form" id="form-1">
-          <h3 class="heading">Form Đăng ký</h3>
-          <h6 class="heading" style="font-weight: 450; font-size: 1.9rem;">Hãy điền và xin nhận xét về project</h6>
-          <p class="desc">Form Validation</p>
+          <h3 class="heading">Form khảo sát</h3>
+          <h6 class="heading" style="font-weight: 450; font-size: 1.9rem;">Xin hãy điền và nhận xét</h6>
       
           <p class="desc">First project on font-end programmed with HTML, CSS and Javascript by  Đạt ❤️</p>
       
@@ -95,7 +94,10 @@
             </div>
           <div class="form-group">
             <label for="password" class="form-label">Mật khẩu</label>
-            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+              <div class="anhien">
+                <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                <input id="toggleBtn" type="button" onclick="togglePassword()" value="Hiện" class="form-control">
+              </div>
             <span class="form-message"></span>
           </div>
         </div>
@@ -113,17 +115,17 @@
       
           <div class="form-group">
             <label for="connect" class="form-label form-connect">Kết nối với tôi qua    :
-              <a href="https://www.facebook.com/DatManucian2206/" target=”_blank” class="icon-link">
+              <a href="https://www.facebook.com/DatManucian2206/" target=”_blank” class="icon-link" title="Kết nối qua Facebook">
                 <i class="fa-brands fa-facebook"></i>
               </a>
 
-              <a href="https://www.instagram.com/dat_manucian_8/" target=”_blank” class="icon-link">
+              <a href="https://www.instagram.com/dat_manucian_8/" target=”_blank” class="icon-link" title="Kết nối qua Instagram">
                 <i class=" fa-brands fa-instagram"></i>
             </a>
             </label>
-          
           </div>
-          <button class="form-submit" id="create">Đăng ký</button>
+          
+          <button class="form-submit" id="create">Gửi phản hồi</button>
 
           <p class="desc">❤️ THANK YOU ❤️
             <i class="fa-thin fa-down"></i>

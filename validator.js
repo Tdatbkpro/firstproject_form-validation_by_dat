@@ -354,3 +354,15 @@ function handleCreateForm() {
         alert('Cảm ơn bạn đã điền !!!')
 
     }
+
+    function togglePassword() {
+        var upass = document.getElementById('password');
+        var toggleBtn = document.getElementById('toggleBtn');
+        if(upass.type == "password"){
+            upass.type = "text";
+            toggleBtn.value = "Ẩn";
+        } else {
+            upass.type = "password";
+            toggleBtn.value = "Hiện";
+        }
+    }
