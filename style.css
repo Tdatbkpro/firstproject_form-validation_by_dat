@@ -85,7 +85,7 @@
   
   .form-submit {
     outline: none;
-    background-color: #1dbfaf;
+    background-color: rgb(241, 6, 6);
     margin-top: 12px;
     padding: 12px 16px;
     font-weight: 600;
@@ -98,7 +98,7 @@
   }
   
   .form-submit:hover {
-    background-color: #1ac7b6;
+    background-color: #c70d0d;
   }
   
   .spacer {
