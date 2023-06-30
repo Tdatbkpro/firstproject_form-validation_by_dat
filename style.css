@@ -133,3 +133,8 @@
 .anhien {
   text-align: start;
 }
+
+#eye i{
+  padding-right: 3;
+  cursor: pointer;
+}
