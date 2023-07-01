@@ -355,14 +355,13 @@ function handleCreateForm() {
 
     }
 
-    function togglePassword() {
-        var upass = document.getElementById('password');
-        var toggleBtn = document.getElementById('toggleBtn');
-        if(upass.type == "password"){
-            upass.type = "text";
-            toggleBtn.value = "Ẩn";
-        } else {
-            upass.type = "password";
-            toggleBtn.value = "Hiện";
-        }
-    }
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+  
+    togglePassword.addEventListener('click', function (e) {
+      // toggle the type attribute
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      // toggle the eye slash icon
+      this.classList.toggle('fa-eye-slash');
+  });

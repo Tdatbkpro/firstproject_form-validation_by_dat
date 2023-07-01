@@ -130,11 +130,15 @@
   padding-left: 10px;
 }
 
-.anhien {
-  text-align: start;
-}
 
 #eye i{
   padding-right: 3;
   cursor: pointer;
+}
+.form-control .password {
+  margin-top: 3.5px;
+  margin-left: -10px;
+  font-size: 1.45rem;
+  border: none;
+  outline: none;
 }
